@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Fashion Store</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+        header {
+            background-color: black;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #4a90e2;
+        }
+        .cart-icon {
+            position: relative;
+            font-size: 1.2rem;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #4a90e2;
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            min-width: 20px;
+            text-align: center;
+        }
+        .hero {
+            background-image: url('../Downloads/download\ \(15\).jfif');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            background-color: #4a90e2;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #357abd;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #4a90e2;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 1rem;
+        }
+        .product-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        .product-info p {
+            margin: 0 0 1rem 0;
+            color: #666;
+        }
+        .product-info .price {
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        footer {
+            background-color:black;
+            color: white;
+            padding: 3rem 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        .footer-section h3 {
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+        .newsletter {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .newsletter input {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Elegant Fashion</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#women">Women's Collection</a></li>
+                <li><a href="#cart" class="cart-icon">🛒 <span class="cart-count" id="cart-count">0</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Discover Your Style</h1>
+            <p>Elegant and inspiring fashion for women</p>
+            <a href="#women" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="section" id="women">
+        <h2>Women's Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="../Downloads/Cute choco heels.jfif" alt="Women's Dress">
+                <div class="product-info">
+                    <h3>Elegant Evening Dress</h3>
+                    <p>Perfect for special occasions</p>
+                    <div class="price">$89.99</div>
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="addToCart('Elegant Evening Dress')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Elegant Evening Dress')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="../Downloads/download (9).jfif" alt="Women's Blouse">
+                <div class="product-info">
+                    <h3>Stylish Blouse</h3>
+                    <p>Comfortable and chic</p>
+                    <div class="price">$49.99</div>
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="addToCart('Stylish Blouse')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Stylish Blouse')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="../Downloads/Chocolate Heavy Pinstripe Cinched Waist Blazer _ Co-ords.jfif" alt="Women's Pants">
+                <div class="product-info">
+                    <h3>Modern Pants</h3>
+                    <p>Versatile and elegant</p>
+                    <div class="price">$69.99</div>
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="addToCart('Modern Pants')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Modern Pants')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="../Downloads/download (11).jfif" alt="Women's Jacket">
+                <div class="product-info">
+                    <h3>Trendy Jacket</h3>
+                    <p>Stay warm in style</p>
+                    <div class="price">$99.99</div>
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="addToCart('Trendy Jacket')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Trendy Jacket')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="../Downloads/download (6).jfif" alt="Women's Skirt">
+                <div class="product-info">
+                    <h3>Chic Skirt</h3>
+                    <p>Flattering and fashionable</p>
+                    <div class="price">$59.99</div>
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="addToCart('Chic Skirt')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Chic Skirt')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="../Downloads/download (8).jfif" alt="Women's Sweater">
+                <div class="product-info">
+                    <h3>Cozy Sweater</h3>
+                    <p>Soft and stylish</p>
+                    <div class="price">$79.99</div>
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="addToCart('Cozy Sweater')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Cozy Sweater')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="../Downloads/download (7).jfif" alt="Women's Shoes">
+                <div class="product-info">
+                    <h3>Elegant Heels</h3>
+                    <p>Complete your look</p>
+                    <div class="price">$119.99</div>
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="addToCart('Elegant Heels')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Elegant Heels')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="../Downloads/download (12).jfif" alt="Women's Accessories">
+                <div class="product-info">
+                    <h3>Stylish Accessories</h3>
+                    <p>Add the finishing touch</p>
+                    <div class="price">$39.99</div>
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="addToCart('Stylish Accessories')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Stylish Accessories')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We offer stylish and comfortable clothing for women. Discover your perfect look with our curated collections.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#women">Women's Collection</a></li>
+                    <li><a href="#cart">Shopping Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@elegantfashion.com</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Address: 123 Fashion Street, Style City, SC 12345</p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get the latest updates and exclusive offers.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter your email">
+                    <button class="btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; border-top: 1px solid #4a90e2; padding-top: 1rem;">&copy; 2023 Elegant Fashion Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cartCount = 0;
+        function addToCart(productName) {
+            cartCount++;
+            document.getElementById('cart-count').textContent = cartCount;
+            alert(productName + ' added to cart!');
+        }
+        function buyNow(productName) {
+            alert('Redirecting to checkout for ' + productName);
+            // In a real implementation, this would redirect to a checkout page
+        }
+    </script>
+</body>
+</html>
